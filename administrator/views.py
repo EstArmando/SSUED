@@ -15,7 +15,7 @@ def get_administrator(id):
 
 @login_required
 def dashboard(request):
-    """ bar = (
+    bar = (
         Student.objects
         .values('university__name')
         .annotate(total_discapacitados=Count('disability'))
@@ -49,14 +49,14 @@ def dashboard(request):
 
     bar_json = json.dumps(list(bar))
     pie_json = json.dumps(list(pie))
-    pie2_json = json.dumps(list(pie2)) """
+    pie2_json = json.dumps(list(pie2))
 
     return render(request, 'dashboard.html', {
         'title': 'Dashboard',
         'panel': 'Dashboard',
-        #'bar': bar_json,
-        #'pie': pie_json,
-        #'pie2': pie2_json
+        'bar': bar_json,
+        'pie': pie_json,
+        'pie2': pie2_json
     })
 
 def signout(request):
