@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header text-center">
+          <h1>Editar Universidad</h1>
+        </div>
+        <div class="card-body">
+          <form action="{% url 'edit_university' university.code %}" method="post">
+            {% csrf_token %}
+
+            <div class="mb-4">
+                <label for="Nombre">Nombre:</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                <div class="text-danger">
+                  {{ form.name.errors }}
+                </div>
+                {% endif %}
+              </div>
+
+              <div class="mb-4">
+                <label for="Siglas">Siglas:</label>
+                {{ form.acronyms }}
+                {% if form.acronyms.errors %}
+                <div class="text-danger">
+                  {{ form.acronyms.errors }}
+                </div>
+                {% endif %}
+              </div>
+
+
+            <div class="d-grid gap-2 mb-2">
+              <button class="btn btn-primary" type="submit">Guardar</button>
+              <a href="{% url 'admins' %}" class="btn btn-danger">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

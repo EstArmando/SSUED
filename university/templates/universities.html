@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+      {% include 'navbar.html' %}
+      <div role="main" class="col-md-10 ml-sm-auto">
+        <div>
+          {% include 'label.html' %}
+          <a href="{% url 'create_university' %}" class="btn btn-primary">Agregar Universidad</a>
+          <hr />
+        </div>
+        <div class="border-1">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Codigo</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Siglas</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for university in universities %}
+                <tr>
+                  <td class="align-middle">{{ university.code }}</td>
+                  <td class="align-middle">{{ university.name }}</td>
+                  <td class="align-middle">{{ university.acronyms }}</td>
+                  <td class="d-flex justify-content-center">
+                    <a href="{% url 'delete_university' university.code %}" class="btn btn-danger">
+                      <span class="material-symbols-outlined">delete</span>
+                    </a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a  href="{% url 'edit_university' university.code %}" class="btn btn-info"
+                      ><span class="material-symbols-outlined">
+                        edit_square
+                      </span></a
+                    >
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,40 @@
+{% load static %}
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      {% if user.is_authenticated %}
+      <a href="{% url 'dashboard' %}">
+        <img src="{% static 'img/Logo.png' %}" alt="SSUED" width="80" height="100" title="home" />
+      </a>
+      {% else %}
+      <a href="{% url 'home' %}">
+        <img src="{% static 'img/Logo.png' %}" alt="SSUED" width="80" height="100" title="home" />
+      </a>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <div class="text-center text-sm-start">
+        <h1>Sistema de Seguimiento Universitario</h1>
+        <h1>de Personas con Discapacidad</h1>
+      </div>
+      <div class="text-end">
+        <a class="btn btn-outline-light me-2" href="{% url 'logout' %}">Logout</a>
+      </div>
+      {% else %}
+      {% if login == True %}
+      <div class="text-end">
+        <h1>Sistema de Seguimiento Universitario</h1>
+        <h1>de Personas con Discapacidad</h1>
+      </div>
+      {% else %}
+      <div class="text-center text-sm-start">
+        <h1>Sistema de Seguimiento Universitario</h1>
+        <h1>de Personas con Discapacidad</h1>
+      </div>
+      <div class="text-end">
+        <a class="btn btn-outline-light me-2" href="{% url 'signin' %}">Login</a>
+      </div>
+      {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</header>

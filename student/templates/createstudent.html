@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="card">
+        <div class="card-header text-center">
+          <h1>Agregar estudiante</h1>
+        </div>
+        <div class="card-body">
+          <form action="{% url 'create_student' %}" method="post">
+            {% csrf_token %}
+
+            <div class="mb-4">
+              <label for="{{ form.age.id_for_label }}">Edad:</label>
+              {{ form.age }}
+              {% if form.errors.age %}
+                <div class="text-danger">{{ form.errors.age }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-4">
+              <label for="{{ form.admission_year.id_for_label }}">Año de Ingreso:</label>
+              {{ form.admission_year }}
+              {% if form.errors.admission_year %}
+                <div class="text-danger">{{ form.errors.admission_year }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-4">
+              <label for="{{ form.gender.id_for_label }}">Género:</label>
+              {{ form.gender }}
+            </div>
+
+            <div class="mb-4">
+              <label for="{{ form.university.id_for_label }}">Universidad:</label>
+              {{ form.university }}
+            </div>
+
+            <div class="mb-4">
+              <label for="{{ form.disbility.id_for_label }}">Discapacidad:</label>
+              {{ form.disability }}
+            </div>
+
+            <div class="d-grid gap-2 mb-2">
+              <button class="btn btn-primary">Guardar</button>
+              <a href="{% url 'students' %}" class="btn btn-danger">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

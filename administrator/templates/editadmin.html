@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="card">
+        <div class="card-header text-center">
+          <h1>Actualiza tus datos</h1>
+        </div>
+        <div class="card-body">
+          <form action="{% url 'edit_admin' user.id %}" method="post">
+            {% csrf_token %}
+
+            <div class="mb-4">
+              <label for="{{ form.username.id_for_label }}">Usuario:</label>
+              {{ form.username }}
+              {% if form.errors.username %}
+                <div class="text-danger">{{ form.errors.username }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-4">
+              <label for="{{ form.name.id_for_label }}">Nombre:</label>
+              {{ form.name }}
+            </div>
+
+            <div class="mb-4">
+              <label for="{{ form.lastname.id_for_label }}">Apellido:</label>
+              {{ form.lastname }}
+            </div>
+
+            <div class="mb-4">
+              <label for="{{ form.email.id_for_label }}">Correo Electrónico:</label>
+              {{ form.email }}
+              {% if form.errors.email %}
+                <div class="text-danger">{{ form.errors.email }}</div>
+              {% endif %}
+            </div>
+
+            <div class="col-2 mb-3">
+              <a href="{% url 'change_pass' %}" class="btn btn-warning">Cambiar contraseña</a>
+            </div>
+
+            <div class="d-grid gap-2 mb-2">
+              <button class="btn btn-primary">Guardar</button>
+              <a href="{% url 'admins' %}" class="btn btn-danger">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

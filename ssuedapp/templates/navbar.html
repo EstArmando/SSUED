@@ -1,0 +1,36 @@
+<nav class="col-md-2 col-12 d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item {% if request.path == '/dashboard/' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined"> leaderboard </span>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == '/admins/' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'admins' %}">
+          <span class="material-symbols-outlined"> person </span>
+          Administradores
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == '/universities/' %}active{% endif %}" >
+        <a class="nav-link" href="{% url 'universities' %}">
+          <span class="material-symbols-outlined"> school </span>
+          Universidades
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == '/students/' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'students' %}">
+          <span class="material-symbols-outlined"> person </span>
+          Estudiantes
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == '/disabilities/' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'disabilities' %}">
+          <span class="material-symbols-outlined"> assist_walker </span>
+          Discapacidades
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

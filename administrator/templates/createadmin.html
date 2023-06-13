@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header text-center">
+          <h1>Agregar Administrador</h1>
+        </div>
+        <div class="card-body">
+          <form action="{% url 'create_admin' %}" method="post">
+            {% csrf_token %}
+
+            <div class="mb-4">
+              <label for="username">Usuario:</label>
+              {{ form.username }}
+              {% if form.username.errors %}
+              <div class="text-danger">
+                {{ form.username.errors }}
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="mb-4">
+              <label for="name">Nombre:</label>
+              {{ form.name }}
+            </div>
+
+            <div class="mb-4">
+              <label for="lastname">Apellido:</label>
+              {{ form.lastname }}
+            </div>
+
+            <div class="mb-4">
+              <label for="email">Correo electrónico:</label>
+              {{ form.email }}
+              {% if form.email.errors %}
+              <div class="text-danger">
+                {{ form.email.errors }}
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="mb-4">
+              <label for="password1">Contraseña:</label>
+              {{ form.password1 }}
+              {% if form.password1.errors %}
+              <div class="text-danger">
+                {{ form.password1.errors }}
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="mb-4">
+              <label for="password2">Confirme contraseña:</label>
+              {{ form.password2 }}
+              {% if form.password2.errors %}
+              <div class="text-danger">
+                {{ form.password2.errors }}
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="form-check mb-3">
+              {{ form.superuser }}
+              <label class="form-check-label" for="superuser">
+                Superusuario
+              </label>
+            </div>
+
+            <div class="d-grid gap-2 mb-2">
+              <button class="btn btn-primary" type="submit">Guardar</button>
+              <a href="{% url 'admins' %}" class="btn btn-danger">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+      {% include 'navbar.html' %}
+      <div role="main" class="col-md-10 ml-sm-auto">
+        <div>
+          {% include 'label.html' %}
+          <a href="{% url 'create_disability' %}" class="btn btn-primary">Agregar Discapacidad</a>
+          <hr />
+        </div>
+        <div class="border-1">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Discapacidad</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for disability in disabilities %}
+                <tr>
+                  <td class="align-middle">{{ disability.type }}</td>
+                  <td class="d-flex justify-content-center">
+                    <a href="{% url 'delete_disability' disability.disability_id %}" class="btn btn-danger">
+                      <span class="material-symbols-outlined">delete</span>
+                    </a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a href="{% url 'edit_disability' disability.disability_id %}" class="btn btn-info"
+                      ><span class="material-symbols-outlined">
+                        edit_square
+                      </span></a
+                    >
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
