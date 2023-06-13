@@ -174,7 +174,7 @@ def change_pass(request):
         'form': form
     })
 
-@login_required
+
 def create_admin(request):
     if request.method == 'POST':
         form = CreateAdminForm(request.POST)
